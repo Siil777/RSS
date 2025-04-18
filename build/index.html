@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+</head>
+<body>
+
+<div x-data="setup()" x-init="init()" class="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <template x-for="(entry, index) in feed" :key="index">
+        <div class="bg-white rounded-2xl shadow p-4 border border-gray-100 hover:shadow-lg transition duration-300">
+            <h2 class="text-xl font-semibold mb-2 text-gray-800" x-text="entry.title"></h2>
+            <p class="text-gray-600 text-sm mb-3" x-text="entry.contentSnippet || 'No summary available.'"></p>
+            <a :href="entry.link" target="_blank" class="inline-block text-indigo-600 font-medium hover:underline">
+                Read more →
+            </a>
+        </div>
+    </template>
+</div>
+
+
+
+</body>
+</html>
+<script src="index.js"></script>
