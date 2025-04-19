@@ -9,21 +9,33 @@
 
 </head>
 <body>
-
-<div x-data="setup()" x-init="init()" class="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-    <template x-for="(entry, index) in feed" :key="index">
-        <div class="bg-white rounded-2xl shadow p-4 border border-gray-100 hover:shadow-lg transition duration-300">
-            <h2 class="text-xl font-semibold mb-2 text-gray-800" x-text="entry.title"></h2>
-            <p class="text-gray-600 text-sm mb-3" x-text="entry.contentSnippet || 'No summary available.'"></p>
-            <a :href="entry.link" target="_blank" class="inline-block text-indigo-600 font-medium hover:underline">
-                Read more →
-            </a>
-        </div>
-    </template>
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline d-flex">
+        <input class=" ms-2 form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn ms-3 btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+<div class="container mt-4">
+    <div class="row" x-data="setup()" x-init="init()">
+        <template x-for="(entry, index) in feed" :key="index">
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title" x-text="entry.title"></h5>
+                        <p class="card-text text-muted" x-text="entry.contentSnippet || 'No summary available.'"></p>
+                        <a :href="entry.link" target="_blank" class="mt-auto btn btn-outline-primary">Read more →</a>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
 </div>
+
+
 
 
 
 </body>
 </html>
 <script src="index.js"></script>
+<script src="bootstrap/bootstrap.bundle.min.js"></script>

@@ -2,8 +2,8 @@ function setup() {
     return {
         feed: [],
         sources: [
-            'https://hnrss.org/frontpage',
-            'https://www.reddit.com/r/javascript/.rss'
+            'https://flipboard.com/@raimoseero/feed-nii8kd0sz.rss',
+
         ],
         get(source) {
             fetch(`http://localhost:3000/api/feed?url=${encodeURIComponent(source)}`)
@@ -11,11 +11,14 @@ function setup() {
                 .then(data => {
                     if(Array.isArray(data)){
                         this.feed.push(...data)
-                        console.log('DATA',data);
+                        //console.log('DATA',data);
                     }else{
                         console.log('rss is not an array')
                     }
+                    const known =  data;
+                    console.log('known',known)
                 });
+
         },
         addToFeed(entry) {
             const alreadyExists = this.feed.some(i => i.link === entry.link);
