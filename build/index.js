@@ -33,6 +33,12 @@ function setup() {
         },
         init() {
             this.sources.forEach(source => this.get(source));
+        },
+        filteredFeed() {
+            return this.feed.filter(entry =>
+                entry.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                (entry.contentSnippet && entry.contentSnippet.toLowerCase().includes(this.searchQuery.toLowerCase()))
+            );
         }
     };
 }

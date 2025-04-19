@@ -10,10 +10,12 @@
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
-    <form class="form-inline d-flex">
-        <input class=" ms-2 form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn ms-3 btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <div class="container-fluid" x-data="{ query: '' }">
+        <form class="form-inline d-flex w-100" @submit.prevent>
+            <input x-model="$store.articles.searchQuery" class="form-control me-2" type="search" placeholder="Search articles..." aria-label="Search">
+            <button class="btn btn-outline-success" type="button">Search</button>
+        </form>
+    </div>
 </nav>
 <div class="container mt-4">
     <div class="row" x-data="setup()" x-init="init()">
